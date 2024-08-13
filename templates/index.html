@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rijndael Cipher</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.ico') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Rijndael Cipher (AES)</h1>
+        <form method="post" action="/">
+            <label for="text">Text:</label>
+            <textarea id="text" name="text" rows="4" required></textarea>
+
+            <label for="key">Key (16, 24, or 32 bytes):</label>
+            <input type="text" id="key" name="key" required>
+
+            <div style="display: flex; justify-content: space-between;">
+                <button type="submit" name="action" value="encrypt">Encrypt</button>
+                <button type="submit" name="action" value="decrypt">Decrypt</button>
+            </div>
+        </form>
+
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <p>{{ message }}</p>
+            {% endfor %}
+        </div>
+        {% endif %}
+        {% endwith %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
